@@ -32,5 +32,54 @@ class App extends Component {
                     totalCountries: res.data
                 }));
             })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    render() {
+        const {darkMode, totalCountries } = this.state;
+        return (
+            <BrowserRouter>
+                <Switch>
+                    <Route
+                        exact
+                        path={this.homePage}
+                        render={routeProps => (
+                            <Dashboard
+                                {...routeProps}
+                                appModeChanger={this.appModeChanger}
+                                darkMode = {darkMode}
+                                homePage = {this.homePage}
+                                totalCountries = {totalCountries}
+                            />
+                        )}
+                    ></Route>
+                    <Route
+                        exact
+                        path={`${this.homePage}countries/:countryName`}
+                        render={routeProps => (
+                            <CountryDetails
+                                {...routeProps}
+                                darkMode = {darkMode}
+                                homePage = {this.homePage}
+                                appModeChanger = {this.appModeChanger}
+                                totalCountries = {totalCountries}
+                            />
+                        )}
+                        /><Route
+                            render={routeProps => (
+                                <NotFound
+                                    {...routeProps}
+                                    darkMode={darkMode}
+                                    homePage={this.homePage}
+                                />
+                            )}
+                        />
+                </Switch>
+            </BrowserRouter>
+        );
     }
 }
+
+export default App;
