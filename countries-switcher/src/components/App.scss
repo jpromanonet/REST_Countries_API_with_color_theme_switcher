@@ -1,0 +1,55 @@
+@import "../assets/styles/libs/vars";
+@import "../assets/styles/libs/placeholder";
+@import "../assets/styles/libs/mixins";
+@import "../assets/styles/base/base";
+@import "../assets/styles/base/fonts";
+
+// Let's draw a pagination icon
+.fa-ellipsis-h {
+    color: $darkGray;
+}
+
+// Dark and light stylings for the app's theme
+.dark {
+    background: $veryDarkBlue;;
+    color: $white;
+    * {
+        color: $white;
+    }
+}
+
+.light {
+    background: $veryLightGray !important;
+    color: $veryDarkBlue--lightMode !important;
+    input {
+        color: $darkGray !important;
+    }
+}
+
+.darkElements {
+    background: $darkBlue;
+    * {
+        color: $white;
+    }
+    input {
+        &::placeholder {
+            color: $white;
+        }
+    }
+}
+
+.lightElements {
+    background: $white !important;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.loadingGif {
+    width: 64px !important;
+    height: 64px !important;
+    margin: auto;
+}
