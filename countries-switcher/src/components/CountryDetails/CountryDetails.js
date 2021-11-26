@@ -89,7 +89,19 @@ class CountryDetails extends Component {
                     ) : (
                         <React.Fragment>
                             <div className={styles.error}>
-                                
+                                <img
+                                    src={`https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/${countryDetails.alpha2Code.toLowerCase()}.svg`}
+                                    alt =  {`${countryDetails.name} flag`}                               />
+                            </div>
+                            <div className={styles.details}>
+                                <h1> {this.props.match.params.countryName} </h1>
+                                <div className={styles.detailsContainer}>
+                                    <div className={styles.mainDetails}>
+                                        <p>
+                                            Native Name:{" "}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </React.Fragment>
                     )
