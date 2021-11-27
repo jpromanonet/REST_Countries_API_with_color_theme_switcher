@@ -99,6 +99,54 @@ class CountryDetails extends Component {
                                     <div className={styles.mainDetails}>
                                         <p>
                                             Native Name:{" "}
+                                            <span
+                                                className={
+                                                    darkMode ? styles.darkDetails : styles.lightDetails
+                                                }
+                                            >
+                                                {countryDetails.nativeName}{" "}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Population:{" "}
+                                            <span
+                                                className={
+                                                    darkMode ? styles.darkDetails : styles.lightDetails
+                                                }
+                                            >
+                                                {Numeral(countryDetails.population).format(0,0)}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Region:{" "}
+                                            <span
+                                                className={
+                                                    darkMode ? styles.darkDetails : styles.lightDetails
+                                                }
+                                            >
+                                                {countryDetails.region}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Sub Region:{" "}
+                                            <span
+                                                className={
+                                                    darkMode ? styles.darkDetails : styles.lightDetails
+                                                }
+                                            >
+                                                {countryDetails.subregion}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Capital:{" "}
+                                            <span
+                                                className={
+                                                    darkMode ? styles.darkDetails : styles.lightDetails
+                                                }
+                                            >
+                                                {" "}
+                                                {countryDetails.capital}
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
