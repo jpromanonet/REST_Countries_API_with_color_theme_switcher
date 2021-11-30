@@ -149,14 +149,64 @@ class CountryDetails extends Component {
                                             </span>
                                         </p>
                                     </div>
+                                    <div className={styles.additionalDetails}>
+                                        <p>
+                                            Top Level Domain:{" "}
+                                            <span
+                                                className={
+                                                    darkMode ? styles.darkDetails : styles.lightDetails
+                                                }
+                                            >
+                                                {countryDetails.topLevelDomain}
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Currencies:{" "}
+                                            <span
+                                                className={
+                                                    darkMode ? styles.darkDetails : styles.lightDetails
+                                                }
+                                            >
+                                                {" "}
+                                                {countryDetails.currencies[0].name}
+                                            </span>
+                                        </p>
+                                        <p className={styles.languages}>
+                                            Languages:
+                                            {countryDetails.languages.map(({name}) => (
+                                                <span
+                                                    className={
+                                                        darkMode
+                                                            ? styles.darkDetails
+                                                            : styles.lightDetails
+                                                        }
+                                                        key={name}    
+                                                    >
+                                                        {name}
+                                                </span>
+                                            ))}
+                                        </p>
+                                    </div>
                                 </div>
+                                {/* Render the border countries*/}
+                                {totalCountries && (
+                                    <BorderCountries
+                                        {...{totalCountries, countryDetails}}
+                                        darkMode={darkMode}
+                                        homePage={homePage}
+                                    />
+                                )}
                             </div>
                         </React.Fragment>
                     )
+                ) : (
+                    <Loading darkMode={darkMode} homePage={homePage} />
                 )}
             </main>
             </React.Fragment>
-        )
+        );
     }
     
 }
+
+export default CountryDetails;
