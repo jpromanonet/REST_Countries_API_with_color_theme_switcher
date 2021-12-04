@@ -82,9 +82,19 @@ class Dashboard extends Component {
                         styles.fillTheRemainingHeight
                     } ${this.props.darkMode ? `dark` : `light`}`}
                 >
-                    
+                    <CountryList
+                        filteredCountries={
+                            filteredCountries ? filteredCountries : totalCountries
+                        }    
+                        homePage = {homePage}
+                        totalCountries = {totalCountries}
+                        darkMode = {this.props.darkMode}
+                        scrollTo = {this.scrollTo}
+                    />
                 </main>
             </React.Fragment>
-        )
+        );
     }
 }
+
+export default Dashboard;
