@@ -8,6 +8,12 @@
     font-size: $homePageItems;
     color: $white;
     a{
-
+        color: $white;
+        text-decoration: none !important;
     }
+}
+
+// Make the dashboard component take the remaining height of the viewport
+.fillTheRemainingHeight {
+    flex-grow: 100;
 }
