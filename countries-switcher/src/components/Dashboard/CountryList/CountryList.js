@@ -31,4 +31,46 @@ const CountryList = ({ filteredCountries, darkMode, totalCountries, homePage, sc
         setTotalPages(tempTotalPages);      
     }, [filteredCountries]);
     // Update the currentPage whenever the filtered countries' list changes
-}
+    useEffect(() => {
+        setCurrentPage(0);
+    }, [filteredCountries]);
+    return(
+        <section className={styles.countryList}>
+            {
+                /*
+                    Check if the countries have yet been fetched or not
+                    if not->show loading gif
+                    if they did>show the countries list
+                */
+            }
+            {totalCountries.length > 0 ? (
+                filteredCountries.length !== 0 ? (
+                    <React.Fragment>
+                        <div>
+                            {/* Show only 8 countries per page based on the filtered countries' list*/}
+                            {countryItemCreator(filteredCountries, currentPage, darkMode, homePage)}
+                        </div>
+                        <Pagination
+                            currentPage={currentPage}
+                            darkMode={darkMode}
+                            /* We use scrollTo ref for the auto scroll behavior */
+                            scrollTo={scrollTo}
+                            setCurrentPage={setCurrentPage}
+                            totalPages={totalPages}
+                        />
+                    </React.Fragment>
+                ) : (
+                    <p className={styles.error}>
+                        Oops, we have no idea what you're talking about n.n
+                        <br />
+                        Search for something else
+                    </p>
+                )
+            ) : (
+                <Loading darkMode={darkMode} />
+            )}
+        </section>
+    );
+};
+
+export default CountryList;
