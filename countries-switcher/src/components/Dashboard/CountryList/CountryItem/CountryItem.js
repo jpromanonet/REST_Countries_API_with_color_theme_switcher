@@ -44,8 +44,18 @@ const CountryItem = ({
                             {region}
                         </span>
                     </div>
+                    <div>
+                        Capital:
+                        <span
+                            className={darkMode ? styles.darkCaption : styles.lightCaption}
+                        >
+                            {capital || "-"}
+                        </span>
+                    </div>
                 </figcaption>
             </figure>
         </Link>
-    )
-}
+    );
+};
+
+export default CountryItem;
