@@ -57,5 +57,63 @@ const paginationOfFirstAndLastPage = (
             >
                 1
             </button>
-    )
-}
+            <button 
+                onclick={
+                    currentPage + 1 === 1
+                        ? () => {
+                            setCurrentPage(totalPages - 1);
+                            scroll(scrollTo);
+                        }
+                    : undefined
+                }
+                className = {currentPage + 1 === totalPages ? styles.isActive : undefined}
+            >
+                {totalPages}
+            </button>
+        </>
+    );
+};
+
+const paginationForSecondAndOneBeforeLastPage = (
+    currentPage,
+    totalPages,
+    setCurrentPage,
+    scrollTo
+) => {
+    return (
+        <>
+            <button
+                onClick={() => {
+                    setCurrentPage(0);
+                    scroll(scrollTo);
+                }}
+            >
+                1
+            </button>
+            {currentPage + 1 === 2 ? (
+                <>
+                    <button className={styles.isActive}>2</button>
+                    <button className={styles.ellipsis}>
+                        <i className="fas fas-ellipsis-h" />
+                    </button>
+                </>
+            ) : (
+                <React.Fragment>
+                    <button className={styles.ellipsis}>
+                        <i className="fas fa-ellipsis-h"/>
+                    </button>
+                    <button className={styles.isActive}>{totalPages - 1}</button>
+                </React.Fragment>
+            )}
+            <button
+                onClick{() => {
+                    setCurrentPage(totalPages - 1);
+                    scroll(scrollTo);
+                }}
+            >
+                {totalPages}
+            </button>
+        </>
+    );
+};
+
