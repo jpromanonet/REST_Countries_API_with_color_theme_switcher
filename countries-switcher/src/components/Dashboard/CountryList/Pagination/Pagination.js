@@ -117,3 +117,24 @@ const paginationForSecondAndOneBeforeLastPage = (
     );
 };
 
+const paginationMiddleSectionCreator = (
+    currentPage,
+    totalPages,
+    setCurrentPage,
+    scrollTo
+) => {
+    if(totalPages === 1){
+        return <button className={styles.isActive}>1</button>
+    }
+    switch (currentPage + 1) {
+        case 1:
+        case totalPages: {
+            return paginationOfFirstAndLastPage(
+                currentPage,
+                totalPages,
+                setCurrentPage,
+                scrollTo
+            );
+        }
+    }
+}
