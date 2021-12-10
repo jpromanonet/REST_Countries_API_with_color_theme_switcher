@@ -3588,6 +3588,11 @@
   "resolved" "https://registry.npmjs.org/content-type/-/content-type-1.0.4.tgz"
   "version" "1.0.4"
 
+"context@^1.1.4":
+  "integrity" "sha512-LBiS1IKHyJWhpzu0on/0L4W0DbnDFtWNkWU7Qo37CJ4rSi/9IqjF3Uw+i94x06H+r32Bs3qq46KkXLI9WEWSIg=="
+  "resolved" "https://registry.npmjs.org/context/-/context-1.1.4.tgz"
+  "version" "1.1.4"
+
 "convert-source-map@^0.3.3":
   "integrity" "sha1-8dgClQr33SYxof6+BZZVDIarMZA="
   "resolved" "https://registry.npmjs.org/convert-source-map/-/convert-source-map-0.3.5.tgz"
