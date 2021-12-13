@@ -106,7 +106,7 @@ const paginationForSecondAndOneBeforeLastPage = (
                 </React.Fragment>
             )}
             <button
-                onClick{() => {
+                onClick={() => {
                     setCurrentPage(totalPages - 1);
                     scroll(scrollTo);
                 }}
@@ -136,5 +136,81 @@ const paginationMiddleSectionCreator = (
                 scrollTo
             );
         }
+        case 2:
+        case totalPages -1: {
+            return paginationForSecondAndOneBeforeLastPage(
+                currentPage,
+                totalPages,
+                setCurrentPage,
+                scrollTo
+            );
+        }
+        default: {
+            return(
+                <React.Fragment>
+                    <button
+                        onclick={() => {
+                            setCurrentPage(0);
+                            scroll(scrollTo)
+                        }}
+                    >
+                        1
+                    </button>
+                    <button className={styles.ellipsis}>
+                        <i className="fas fa-ellipsis-h"/>
+                    </button>
+                    <button className={styles.isActive}>{currentPage  + 1}</button>
+                    <button className={styles.ellipsis}>
+                        <i className="fas fa-ellipsis-h" />
+                    </button>
+                    <button
+                        onClick={() => {
+                            setCurrentPage(totalPages - 1);
+                            scroll(scrollTo);
+                        }}
+                    >
+                        {totalPages}
+                    </button>
+                </React.Fragment>
+            );
+        }
     }
-}
+};
+
+// Main component
+const Pagination = ({ currentPage, setCurrentPage, totalPages, scrollTo }) => {
+    // Context
+    const { isUsingDarkMode } = useContext(AppContext);
+
+    return(
+        <div
+            className={`${styles.pagination} ${isUsingDarkMode ? `dark ` : `light `}`}
+        >
+            <button
+                onClick={() => {
+                    onSetCurrentPage(setCurrentPage, currentPage, DECREMENT, scrollTo);
+                }}
+                disabled={currentPage === 0}
+            >
+                <i className="fas fa-arrow-left" />
+            </button>
+            {paginationMiddleSectionCreator(
+                currentPage,
+                totalPages,
+                setCurrentPage,
+                scrollTo
+            )}
+            <button
+                className={styles.nextPage}
+                onClick={() => {
+                    onSetCurrentPage(setCurrentPage, currentPage, INCREMENT, scrollTo);
+                }}
+                disabled={currentPage + 1 === totalPages}
+            >
+                <i className="fas fa-arrow-left" />
+            </button>
+        </div>
+    );
+};
+
+export default Pagination;
